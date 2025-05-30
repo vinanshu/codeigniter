@@ -1,0 +1,34 @@
+CREATE DATABASE sims1;
+
+USE sims;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+INSERT INTO users (username, password) VALUES ('admin', 'admin');
+
+
+
+CREATE TABLE `students` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_number` VARCHAR(50) NOT NULL,
+  `full_name` VARCHAR(100) NOT NULL,
+  `age` INT(3) DEFAULT NULL,
+  `phone` VARCHAR(20) DEFAULT NULL,
+  `address` TEXT DEFAULT NULL,
+  `course` ENUM('BSIT', 'BSTCM', 'BSEMT') NOT NULL,
+  `year` ENUM('1st', '2nd', '3rd', '4th') NOT NULL,
+  `section` ENUM('A', 'B', 'C', 'D', 'E') NOT NULL,
+  `photo` VARCHAR(255) DEFAULT NULL,
+  `enrollment_status` ENUM('Enrolled', 'Dropped', 'Pending') NOT NULL DEFAULT 'Pending',
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_id_number` (`id_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
